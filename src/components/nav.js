@@ -206,7 +206,7 @@ const Nav = ({ isHome }) => {
   );
 
   const ResumeLink = (
-    <a className="resume-button" href="/LuisSerpaPinto_resume.pdf" target="_blank" rel="noopener noreferrer">
+    <a className="resume-button" href="/Luis-Serpa-Pinto-CV.pdf" target="_blank" rel="noopener noreferrer">
       Resume
     </a>
   );

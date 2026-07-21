@@ -126,7 +126,16 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['HubSpot', 'n8n', 'React', 'JavaScript (ES6+)', 'CSS/SASS', 'Git'];
+  const skills = [
+    'Claude Code',
+    'Agentic AI',
+    'n8n',
+    'HubSpot',
+    'React',
+    'JavaScript (ES6+)',
+    'CSS/SASS',
+    'Git',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -149,8 +158,16 @@ const About = () => {
             </p>
 
             <p>
-              Currently, I’m a Frontend Developer and Team Lead at{' '}
-              <a href="https://www.visma.com/" target="_blank">Visma</a>, leading the development of a HubSpot theme used by various companies across the group, while also exploring AI and automation to create smarter workflows.
+              Currently, I’m a Lead Frontend Developer at{' '}
+              <a href="https://www.visma.com/" target="_blank">Visma</a>, leading the development of a HubSpot theme used by 50+ companies across the group.
+            </p>
+
+            <p>
+              A big part of my focus these days is <strong>AI</strong>. I use agentic tools like{' '}
+              <a href="https://www.claude.com/product/claude-code" target="_blank">Claude Code</a> daily to
+              speed up development and cut out repetitive work, and I build automation workflows with{' '}
+              <a href="https://n8n.io/" target="_blank">n8n</a> to connect systems and let the machines handle
+              the busywork. I’m genuinely excited about how agentic AI is reshaping the way we build for the web.
             </p>
 
             <p>Here are a few technologies I’ve been working with recently:</p>
