@@ -6,7 +6,7 @@ import styled, { css } from 'styled-components';
 import { navLinks } from '@config';
 import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
-import { Menu, ThemeToggle } from '@components';
+import { Menu, ThemeToggle, LangToggle } from '@components';
 import { IconLogo, IconHex } from '@components/icons';
 
 const StyledHeader = styled.header`
@@ -228,6 +228,7 @@ const Nav = ({ isHome }) => {
                   ))}
               </ol>
               <div>{ResumeLink}</div>
+              <LangToggle />
               <ThemeToggle />
             </StyledLinks>
 
@@ -268,6 +269,7 @@ const Nav = ({ isHome }) => {
                 )}
               </TransitionGroup>
 
+              <LangToggle />
               <ThemeToggle />
             </StyledLinks>
 

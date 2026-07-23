@@ -3,6 +3,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import styled from 'styled-components';
 import { navDelay, loaderDelay } from '@utils';
 import { usePrefersReducedMotion } from '@hooks';
+import { useTranslations } from '@i18n';
 // import { email } from '@config';
 
 const StyledHeroSection = styled.section`
@@ -64,6 +65,7 @@ const StyledHeroSection = styled.section`
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { hero } = useTranslations();
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -74,18 +76,17 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <p className="overline">Hi, my name is</p>;
-  const two = <h1 className="big-heading">Luís Serpa Pinto</h1>;
-  const three = <h3 className="big-heading">I build design systems that scale.</h3>;
+  const one = <p className="overline">{hero.overline}</p>;
+  const two = <h1 className="big-heading">{hero.name}</h1>;
+  const three = <h3 className="big-heading">{hero.tagline}</h3>;
   const four = (
     <>
       <p>
-        I’m a web developer and Lead Frontend Developer at{' '}
+        {hero.introBefore}
         <a href="https://www.visma.com/" target="_blank" rel="noreferrer">
-          Visma
+          {hero.introCompany}
         </a>
-        , owning the custom HubSpot theme behind 50+ websites — from planning and
-        prioritisation to delivery and QA.
+        {hero.introAfter}
       </p>
 
     </>
@@ -95,7 +96,7 @@ const Hero = () => {
       className="email-link"
       href="#projects"
       rel="noreferrer">
-      See what I’ve built
+      {hero.cta}
     </a>
   );
 

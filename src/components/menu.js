@@ -6,6 +6,7 @@ import { navLinks } from '@config';
 import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
 import ThemeToggle from './themeToggle';
+import LangToggle from './langToggle';
 
 const StyledMenu = styled.div`
   display: none;
@@ -271,6 +272,7 @@ const Menu = () => {
               Resume
             </a>
 
+            <LangToggle />
             <ThemeToggle />
           </nav>
         </StyledSidebar>

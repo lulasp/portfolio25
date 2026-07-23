@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
+import { useTranslations } from '@i18n';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -117,6 +118,7 @@ const StyledPic = styled.div`
 const About = () => {
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const { about } = useTranslations();
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -139,38 +141,44 @@ const About = () => {
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
-      <h2 className="numbered-heading">About Me</h2>
+      <h2 className="numbered-heading">{about.heading}</h2>
 
       <div className="inner">
         <StyledText>
           <div>
             <p>
-                Hello! My name is Luís Serpa Pinto and I’m from Porto, Portugal! Since early in my life I developed
-                an interest in computers, the internet, and their capabilities. As a result of this interest I graduated in Multimedia
-                Communication Technologies at <a href="https://www.ismai.pt/pt" target="_blank">ISMAI</a>, all this to achieve my goal: Becoming a web developer.
+              {about.p1a}
+              <a href="https://www.ismai.pt/pt" target="_blank">{about.p1Ismai}</a>
+              {about.p1b}
             </p>
 
             <p>
-              Fast-forward to today, and I’ve worked at a{' '}
-              <a href="https://www.technologycatalogue.com/" target="_blank">Dutch start-up</a>, a {' '}
-              <a href="https://www.glintt.com/" target="_blank">Portuguese health software company</a>, and later at a{' '}
-              <a href="https://youlead.pt/" target="_blank">Lisbon-based marketing automation agency</a>, where I developed a custom HubSpot theme for one of Portugal’s largest insurance companies.
+              {about.p2a}
+              <a href="https://www.technologycatalogue.com/" target="_blank">{about.p2Link1}</a>
+              {about.p2b}
+              <a href="https://www.glintt.com/" target="_blank">{about.p2Link2}</a>
+              {about.p2c}
+              <a href="https://youlead.pt/" target="_blank">{about.p2Link3}</a>
+              {about.p2d}
             </p>
 
             <p>
-              Currently, I’m a Lead Frontend Developer at{' '}
-              <a href="https://www.visma.com/" target="_blank">Visma</a>, leading the development of a HubSpot theme used by 50+ companies across the group.
+              {about.p3a}
+              <a href="https://www.visma.com/" target="_blank">{about.p3Visma}</a>
+              {about.p3b}
             </p>
 
             <p>
-              A big part of my focus these days is <strong>AI</strong>. I use agentic tools like{' '}
-              <a href="https://www.claude.com/product/claude-code" target="_blank">Claude Code</a> daily to
-              speed up development and cut out repetitive work, and I build automation workflows with{' '}
-              <a href="https://n8n.io/" target="_blank">n8n</a> to connect systems and let the machines handle
-              the busywork. I’m genuinely excited about how agentic AI is reshaping the way we build for the web.
+              {about.p4a}
+              <strong>{about.p4Strong}</strong>
+              {about.p4b}
+              <a href="https://www.claude.com/product/claude-code" target="_blank">{about.p4Link1}</a>
+              {about.p4c}
+              <a href="https://n8n.io/" target="_blank">{about.p4Link2}</a>
+              {about.p4d}
             </p>
 
-            <p>Here are a few technologies I’ve been working with recently:</p>
+            <p>{about.skillsIntro}</p>
           </div>
 
           <ul className="skills-list">

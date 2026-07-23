@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { srConfig, email } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
+import { useTranslations } from '@i18n';
 
 const StyledContactSection = styled.section`
   max-width: 600px;
@@ -42,6 +43,7 @@ const StyledContactSection = styled.section`
 `;
 
 const Contact = () => {
+  const { contact } = useTranslations();
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
@@ -55,17 +57,14 @@ const Contact = () => {
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
-      <h2 className="numbered-heading overline">What’s Next?</h2>
+      <h2 className="numbered-heading overline">{contact.overline}</h2>
 
-      <h2 className="title">Get In Touch</h2>
+      <h2 className="title">{contact.title}</h2>
 
-      <p>
-        I’m currently looking for a new React opportunity, so feel free to contact me.
-        Whether you have a job opportunity or just a question, I’ll try my best to get back to you!
-      </p>
+      <p>{contact.body}</p>
 
       <a className="email-link" href={`mailto:${email}`}>
-        Reach Out
+        {contact.cta}
       </a>
     </StyledContactSection>
   );

@@ -6,6 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { useTranslations } from '@i18n';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -523,6 +524,7 @@ const StyledProject = styled.li`
 `;
 
 const SitesCarousel = ({ sites, prefersReducedMotion }) => {
+  const { featured } = useTranslations();
   const trackRef = useRef(null);
 
   const scrollTrack = dir => {
@@ -537,14 +539,14 @@ const SitesCarousel = ({ sites, prefersReducedMotion }) => {
   return (
     <div className="project-sites">
       <div className="carousel-header">
-        <p className="project-sites-label">Live sites on the theme</p>
+        <p className="project-sites-label">{featured.sitesLabel}</p>
         <div className="carousel-nav">
-          <button type="button" aria-label="Previous sites" onClick={() => scrollTrack(-1)}>
+          <button type="button" aria-label={featured.prevSites} onClick={() => scrollTrack(-1)}>
             <svg viewBox="0 0 24 24" className="feather" aria-hidden="true">
               <polyline points="15 18 9 12 15 6" />
             </svg>
           </button>
-          <button type="button" aria-label="Next sites" onClick={() => scrollTrack(1)}>
+          <button type="button" aria-label={featured.nextSites} onClick={() => scrollTrack(1)}>
             <svg viewBox="0 0 24 24" className="feather" aria-hidden="true">
               <polyline points="9 18 15 12 9 6" />
             </svg>
@@ -603,13 +605,13 @@ const Featured = () => {
                 }
               }
             }
-            html
           }
         }
       }
     }
   `);
 
+  const { featured } = useTranslations();
   const featuredProjects = data.featured.edges.filter(({ node }) => node);
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
@@ -627,13 +629,13 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built in the Past
+        {featured.heading}
       </h2>
 
       <StyledProjectsGrid>
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
-            const { frontmatter, html } = node;
+            const { frontmatter } = node;
             const { external, title, tech, github, cover, cta, sites } = frontmatter;
             const image = getImage(cover);
 
@@ -641,16 +643,15 @@ const Featured = () => {
               <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
                 <div className="project-content">
                   <div>
-                    <p className="project-overline">Featured Project</p>
+                    <p className="project-overline">{featured.overline}</p>
 
                     <h3 className="project-title">
                       <a href={external}>{title}</a>
                     </h3>
 
-                    <div
-                      className="project-description"
-                      dangerouslySetInnerHTML={{ __html: html }}
-                    />
+                    <div className="project-description">
+                      <p>{featured.descriptions[title]}</p>
+                    </div>
 
                     {tech.length && (
                       <ul className="project-tech-list">
@@ -666,17 +667,17 @@ const Featured = () => {
 
                     <div className="project-links">
                       {cta && (
-                        <a href={cta} aria-label="Course Link" className="cta">
-                          Learn More
+                        <a href={cta} aria-label={featured.courseLink} className="cta">
+                          {featured.learnMore}
                         </a>
                       )}
                       {github && (
-                        <a href={github} aria-label="GitHub Link">
+                        <a href={github} aria-label={featured.githubLink}>
                           <Icon name="GitHub" />
                         </a>
                       )}
                       {external && !cta && (
-                        <a href={external} aria-label="External Link" className="external">
+                        <a href={external} aria-label={featured.externalLink} className="external">
                           <Icon name="External" />
                         </a>
                       )}
