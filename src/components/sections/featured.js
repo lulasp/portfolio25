@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
@@ -255,7 +255,29 @@ const StyledProject = styled.li`
 
     .carousel-nav {
       display: flex;
-      gap: 6px;
+      align-items: center;
+      gap: 8px;
+
+      .carousel-count {
+        display: inline-flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 3px;
+        min-width: 54px;
+        color: var(--light-gray);
+        font-family: var(--font-mono);
+        font-size: var(--fz-xs);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.03em;
+        user-select: none;
+
+        .current {
+          color: var(--green);
+        }
+        .sep {
+          opacity: 0.5;
+        }
+      }
 
       button {
         ${({ theme }) => theme.mixins.flexCenter};
@@ -272,6 +294,17 @@ const StyledProject = styled.li`
         &:focus {
           color: var(--green);
           border-color: var(--green);
+        }
+
+        &:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+
+          &:hover,
+          &:focus {
+            color: var(--gray);
+            border-color: var(--lightest-bg);
+          }
         }
 
         svg {
@@ -526,6 +559,40 @@ const StyledProject = styled.li`
 const SitesCarousel = ({ sites, prefersReducedMotion }) => {
   const { featured } = useTranslations();
   const trackRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  const updatePosition = () => {
+    const track = trackRef.current;
+    if (!track) {
+      return;
+    }
+    const maxIndex = sites.length - 1;
+    const item = track.firstElementChild;
+    const step = item ? item.offsetWidth + 12 : 112;
+    const end = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+    let idx = end ? maxIndex : Math.round(track.scrollLeft / step);
+    idx = Math.min(Math.max(idx, 0), maxIndex);
+    setActiveIndex(idx);
+    setAtStart(track.scrollLeft <= 1);
+    setAtEnd(end);
+  };
+
+  useEffect(() => {
+    updatePosition();
+    const track = trackRef.current;
+    if (!track) {
+      return undefined;
+    }
+    track.addEventListener('scroll', updatePosition, { passive: true });
+    window.addEventListener('resize', updatePosition);
+    return () => {
+      track.removeEventListener('scroll', updatePosition);
+      window.removeEventListener('resize', updatePosition);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sites.length]);
 
   const scrollTrack = dir => {
     const track = trackRef.current;
@@ -536,18 +603,51 @@ const SitesCarousel = ({ sites, prefersReducedMotion }) => {
     track.scrollBy({ left: dir * amount, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
   };
 
+  const pad = n => String(n).padStart(2, '0');
+
   return (
     <div className="project-sites">
       <div className="carousel-header">
         <p className="project-sites-label">{featured.sitesLabel}</p>
         <div className="carousel-nav">
-          <button type="button" aria-label={featured.prevSites} onClick={() => scrollTrack(-1)}>
-            <svg viewBox="0 0 24 24" className="feather" aria-hidden="true">
+          <button
+            type="button"
+            aria-label={featured.prevSites}
+            onClick={() => scrollTrack(-1)}
+            disabled={atStart}>
+            <svg
+              viewBox="0 0 24 24"
+              className="feather"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true">
               <polyline points="15 18 9 12 15 6" />
             </svg>
           </button>
-          <button type="button" aria-label={featured.nextSites} onClick={() => scrollTrack(1)}>
-            <svg viewBox="0 0 24 24" className="feather" aria-hidden="true">
+
+          <span className="carousel-count" aria-hidden="true">
+            <span className="current">{pad(activeIndex + 1)}</span>
+            <span className="sep">/</span>
+            <span className="total">{pad(sites.length)}</span>
+          </span>
+
+          <button
+            type="button"
+            aria-label={featured.nextSites}
+            onClick={() => scrollTrack(1)}
+            disabled={atEnd}>
+            <svg
+              viewBox="0 0 24 24"
+              className="feather"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true">
               <polyline points="9 18 15 12 9 6" />
             </svg>
           </button>

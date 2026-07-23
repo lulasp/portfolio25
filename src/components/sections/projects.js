@@ -119,6 +119,8 @@ const StyledProject = styled.li`
     margin: 0 0 10px;
     color: var(--lightest-gray);
     font-size: var(--fz-xxl);
+    overflow-wrap: break-word;
+    word-break: break-word;
 
     a {
       position: static;
