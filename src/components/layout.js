@@ -10,6 +10,18 @@ const StyledContent = styled.div`
   min-height: 100vh;
 `;
 
+/* Global film grain — one fixed layer shared by every section, so there's no
+   per-section seam. Rendered as an element (not in GlobalStyle) because the
+   data-URI breaks stylis when placed in createGlobalStyle. */
+const StyledGrain = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+`;
+
 const Layout = ({ children, location }) => {
   const isHome = location.pathname === '/';
   const [isLoading, setIsLoading] = useState(isHome);
@@ -53,6 +65,7 @@ const Layout = ({ children, location }) => {
       <div id="root">
         <ThemeProvider theme={theme}>
           <GlobalStyle />
+          <StyledGrain aria-hidden="true" />
 
           <a className="skip-to-content" href="#content">
             Skip to Content

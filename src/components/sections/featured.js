@@ -82,6 +82,20 @@ const StyledProject = styled.li`
         margin-right: 0;
       }
     }
+    .project-sites {
+      margin-left: auto;
+
+      @media (max-width: 768px) {
+        margin-left: 0;
+      }
+    }
+    .project-sites .carousel-header {
+      flex-direction: row-reverse;
+
+      @media (max-width: 768px) {
+        flex-direction: row;
+      }
+    }
     .project-image {
       grid-column: 1 / 8;
 
@@ -124,7 +138,7 @@ const StyledProject = styled.li`
   }
 
   .project-title {
-    color: var(--lightest-slate);
+    color: var(--lightest-gray);
     font-size: clamp(24px, 5vw, 28px);
 
     @media (min-width: 768px) {
@@ -157,8 +171,8 @@ const StyledProject = styled.li`
     z-index: 2;
     padding: 25px;
     border-radius: var(--border-radius);
-    background-color: var(--light-navy);
-    color: var(--light-slate);
+    background-color: var(--light-bg);
+    color: var(--light-gray);
     font-size: var(--fz-lg);
 
     @media (max-width: 768px) {
@@ -192,7 +206,7 @@ const StyledProject = styled.li`
 
     li {
       margin: 0 20px 5px 0;
-      color: var(--light-slate);
+      color: var(--light-gray);
       font-family: var(--font-mono);
       font-size: var(--fz-xs);
       white-space: nowrap;
@@ -203,8 +217,158 @@ const StyledProject = styled.li`
 
       li {
         margin: 0 10px 5px 0;
-        color: var(--lightest-slate);
+        color: var(--lightest-gray);
       }
+    }
+  }
+
+  .project-sites {
+    position: relative;
+    z-index: 2;
+    margin: 20px 0 0;
+    /* Keep the carousel clear of the overlapping project image
+       (image overlaps the content column by 1 col here, 3 at 1080). */
+    width: 83.333%;
+
+    @media (max-width: 1080px) {
+      width: 62.5%;
+    }
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    .carousel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .project-sites-label {
+      margin: 0;
+      color: var(--light-gray);
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+    }
+
+    .carousel-nav {
+      display: flex;
+      gap: 6px;
+
+      button {
+        ${({ theme }) => theme.mixins.flexCenter};
+        width: 30px;
+        height: 30px;
+        padding: 0;
+        color: var(--gray);
+        background-color: transparent;
+        border: 1px solid var(--lightest-bg);
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+
+        &:hover,
+        &:focus {
+          color: var(--green);
+          border-color: var(--green);
+        }
+
+        svg {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+
+    .carousel-track {
+      display: flex;
+      gap: 12px;
+      margin: 0;
+      padding: 0 0 6px;
+      list-style: none;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      scrollbar-color: var(--lightest-bg) transparent;
+
+      &::-webkit-scrollbar {
+        height: 6px;
+      }
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--lightest-bg);
+        border-radius: 10px;
+      }
+    }
+
+    li {
+      flex: 0 0 auto;
+      width: 100px;
+      scroll-snap-align: start;
+    }
+
+    a {
+      display: block;
+
+      &:hover,
+      &:focus {
+        outline: 0;
+
+        .site-thumb {
+          background: transparent;
+
+          &:before {
+            background: transparent;
+          }
+        }
+
+        .img {
+          filter: none;
+        }
+      }
+    }
+
+    .site-thumb {
+      ${({ theme }) => theme.mixins.boxShadow};
+      position: relative;
+      border-radius: var(--border-radius);
+      background-color: var(--green);
+      overflow: hidden;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+        transition: var(--transition);
+        background-color: var(--bg);
+        mix-blend-mode: screen;
+      }
+    }
+
+    .img {
+      border-radius: var(--border-radius);
+      mix-blend-mode: multiply;
+      filter: grayscale(100%) contrast(1) brightness(90%);
+      transition: var(--transition);
+    }
+
+    .site-name {
+      display: block;
+      margin-top: 6px;
+      color: var(--light-gray);
+      font-family: var(--font-mono);
+      font-size: var(--fz-xxs);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
@@ -214,7 +378,7 @@ const StyledProject = styled.li`
     position: relative;
     margin-top: 10px;
     margin-left: -10px;
-    color: var(--lightest-slate);
+    color: var(--lightest-gray);
 
     a {
       ${({ theme }) => theme.mixins.flexCenter};
@@ -283,7 +447,7 @@ const StyledProject = styled.li`
         bottom: 0;
         z-index: 3;
         transition: var(--transition);
-        background-color: var(--navy);
+        background-color: var(--bg);
         mix-blend-mode: screen;
       }
     }
@@ -301,7 +465,108 @@ const StyledProject = styled.li`
       }
     }
   }
+
+  /* Light mode: the dark-mode navy/screen overlay washes the image to white.
+     Use a soft green multiply tint that clears on hover instead. */
+  [data-theme='light'] & {
+    .project-image a {
+      background-color: transparent;
+
+      &:before {
+        display: block;
+        background-color: var(--green);
+        mix-blend-mode: multiply;
+        opacity: 0.35;
+      }
+
+      &:hover,
+      &:focus {
+        &:before {
+          opacity: 0;
+        }
+        .img {
+          filter: none;
+        }
+      }
+    }
+
+    .project-image .img {
+      mix-blend-mode: normal;
+      filter: grayscale(50%);
+
+      @media (max-width: 768px) {
+        filter: grayscale(50%);
+      }
+    }
+
+    .project-sites .site-thumb {
+      background-color: transparent;
+
+      &:before {
+        display: block;
+        background-color: var(--green);
+        mix-blend-mode: multiply;
+        opacity: 0.35;
+      }
+    }
+
+    .project-sites a:hover .site-thumb:before,
+    .project-sites a:focus .site-thumb:before {
+      opacity: 0;
+    }
+
+    .project-sites .img {
+      mix-blend-mode: normal;
+      filter: grayscale(50%);
+    }
+  }
 `;
+
+const SitesCarousel = ({ sites, prefersReducedMotion }) => {
+  const trackRef = useRef(null);
+
+  const scrollTrack = dir => {
+    const track = trackRef.current;
+    if (!track) {
+      return;
+    }
+    const amount = Math.max(track.clientWidth * 0.8, 120);
+    track.scrollBy({ left: dir * amount, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+  };
+
+  return (
+    <div className="project-sites">
+      <div className="carousel-header">
+        <p className="project-sites-label">Live sites on the theme</p>
+        <div className="carousel-nav">
+          <button type="button" aria-label="Previous sites" onClick={() => scrollTrack(-1)}>
+            <svg viewBox="0 0 24 24" className="feather" aria-hidden="true">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button type="button" aria-label="Next sites" onClick={() => scrollTrack(1)}>
+            <svg viewBox="0 0 24 24" className="feather" aria-hidden="true">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <ul className="carousel-track" ref={trackRef}>
+        {sites.map((site, i) => (
+          <li key={i}>
+            <a href={site.url} aria-label={site.name}>
+              <div className="site-thumb">
+                <GatsbyImage image={getImage(site.image)} alt={site.name} className="img" />
+              </div>
+              <span className="site-name">{site.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
 const Featured = () => {
   const data = useStaticQuery(graphql`
@@ -323,6 +588,20 @@ const Featured = () => {
               github
               external
               cta
+              sites {
+                name
+                url
+                image {
+                  childImageSharp {
+                    gatsbyImageData(
+                      width: 240
+                      height: 150
+                      placeholder: BLURRED
+                      formats: [AUTO, WEBP, AVIF]
+                    )
+                  }
+                }
+              }
             }
             html
           }
@@ -355,7 +634,7 @@ const Featured = () => {
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
-            const { external, title, tech, github, cover, cta } = frontmatter;
+            const { external, title, tech, github, cover, cta, sites } = frontmatter;
             const image = getImage(cover);
 
             return (
@@ -379,6 +658,10 @@ const Featured = () => {
                           <li key={i}>{tech}</li>
                         ))}
                       </ul>
+                    )}
+
+                    {sites && sites.length > 0 && (
+                      <SitesCarousel sites={sites} prefersReducedMotion={prefersReducedMotion} />
                     )}
 
                     <div className="project-links">

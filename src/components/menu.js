@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { navLinks } from '@config';
 import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
+import ThemeToggle from './themeToggle';
 
 const StyledMenu = styled.div`
   display: none;
@@ -98,8 +99,8 @@ const StyledSidebar = styled.aside`
     width: min(75vw, 400px);
     height: 100vh;
     outline: 0;
-    background-color: var(--light-navy);
-    box-shadow: -10px 0px 30px -15px var(--navy-shadow);
+    background-color: var(--light-bg);
+    box-shadow: -10px 0px 30px -15px var(--bg-shadow);
     z-index: 9;
     transform: translateX(${props => (props.menuOpen ? 0 : 100)}vw);
     visibility: ${props => (props.menuOpen ? 'visible' : 'hidden')};
@@ -110,7 +111,7 @@ const StyledSidebar = styled.aside`
     ${({ theme }) => theme.mixins.flexBetween};
     width: 100%;
     flex-direction: column;
-    color: var(--lightest-slate);
+    color: var(--lightest-gray);
     font-family: var(--font-mono);
     text-align: center;
   }
@@ -269,6 +270,8 @@ const Menu = () => {
             <a href="/Luis-Serpa-Pinto-CV.pdf" className="resume-link">
               Resume
             </a>
+
+            <ThemeToggle />
           </nav>
         </StyledSidebar>
       </div>
