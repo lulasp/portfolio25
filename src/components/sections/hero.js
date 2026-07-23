@@ -11,12 +11,28 @@ const StyledHeroSection = styled.section`
   align-items: flex-start;
   min-height: 100vh;
   padding: 0;
+  position: relative;
+
+  /* Ambient lime glow behind the hero text */
+  &:before {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: 32%;
+    transform: translateX(-50%);
+    width: min(900px, 90vw);
+    height: 620px;
+    background: var(--hero-glow);
+    filter: blur(50px);
+    pointer-events: none;
+    z-index: -1;
+  }
 
   @media (max-width: 480px) and (min-height: 700px) {
     padding-bottom: 10vh;
   }
 
-  h1 {
+  .overline {
     margin: 0 0 30px 4px;
     color: var(--green);
     font-family: var(--font-mono);
@@ -30,7 +46,7 @@ const StyledHeroSection = styled.section`
 
   h3 {
     margin-top: 10px;
-    color: var(--slate);
+    color: var(--gray);
     line-height: 0.9;
   }
 
@@ -58,17 +74,18 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Luís Serpa Pinto</h2>;
-  const three = <h3 className="big-heading">I build things for the web.</h3>;
+  const one = <p className="overline">Hi, my name is</p>;
+  const two = <h1 className="big-heading">Luís Serpa Pinto</h1>;
+  const three = <h3 className="big-heading">I build design systems that scale.</h3>;
   const four = (
     <>
       <p>
-        I’m a web developer focused on crafting outstanding
-        digital experiences. Currently, I work as a Lead Frontend Developer at{' '}
+        I’m a web developer and Lead Frontend Developer at{' '}
         <a href="https://www.visma.com/" target="_blank" rel="noreferrer">
           Visma
-        </a>.
+        </a>
+        , owning the custom HubSpot theme behind 50+ websites — from planning and
+        prioritisation to delivery and QA.
       </p>
 
     </>
@@ -78,7 +95,7 @@ const Hero = () => {
       className="email-link"
       href="#projects"
       rel="noreferrer">
-      Check out my portfolio!
+      See what I’ve built
     </a>
   );
 
