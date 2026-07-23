@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { useOnClickOutside } from '@hooks';
+import { useLang } from '@i18n';
 
 const LANGS = [
   { code: 'en', label: 'EN', name: 'English' },
@@ -92,22 +93,11 @@ const ChevronIcon = () => (
 );
 
 const LangToggle = () => {
-  const [mounted, setMounted] = useState(false);
+  const { lang, setLang, mounted } = useLang();
   const [open, setOpen] = useState(false);
-  const [lang, setLang] = useState('en');
 
   const wrapperRef = useRef();
   useOnClickOutside(wrapperRef, () => setOpen(false));
-
-  useEffect(() => {
-    let current = localStorage.getItem('lang');
-    if (!LANGS.some(l => l.code === current)) {
-      current = 'en';
-    }
-    document.documentElement.setAttribute('lang', current);
-    setLang(current);
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     const onKeyDown = e => {
@@ -121,15 +111,6 @@ const LangToggle = () => {
 
   const selectLang = next => {
     setOpen(false);
-    if (next === lang) {
-      return;
-    }
-    document.documentElement.setAttribute('lang', next);
-    try {
-      localStorage.setItem('lang', next);
-    } catch (e) {
-      // ignore storage failures (private mode etc.)
-    }
     setLang(next);
   };
 

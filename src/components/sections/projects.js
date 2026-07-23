@@ -6,6 +6,7 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { useTranslations } from '@i18n';
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -183,13 +184,13 @@ const Projects = () => {
               github
               external
             }
-            html
           }
         }
       }
     }
   `);
 
+  const t = useTranslations();
   const [showMore, setShowMore] = useState(false);
   const revealTitle = useRef(null);
   const revealArchiveLink = useRef(null);
@@ -212,7 +213,7 @@ const Projects = () => {
   const projectsToShow = showMore ? projects : firstSix;
 
   const projectInner = node => {
-    const { frontmatter, html } = node;
+    const { frontmatter } = node;
     const { github, external, title, tech } = frontmatter;
 
     return (
@@ -224,14 +225,14 @@ const Projects = () => {
             </div>
             <div className="project-links">
               {github && (
-                <a href={github} aria-label="GitHub Link" target="_blank" rel="noreferrer">
+                <a href={github} aria-label={t.projects.githubLink} target="_blank" rel="noreferrer">
                   <Icon name="GitHub" />
                 </a>
               )}
               {external && (
                 <a
                   href={external}
-                  aria-label="External Link"
+                  aria-label={t.projects.externalLink}
                   className="external"
                   target="_blank"
                   rel="noreferrer">
@@ -247,7 +248,9 @@ const Projects = () => {
             </a>
           </h3>
 
-          <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
+          <div className="project-description">
+            <p>{t.projects.descriptions[title]}</p>
+          </div>
         </header>
 
         <footer>
@@ -265,10 +268,10 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
-      <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
+      <h2 ref={revealTitle}>{t.projects.heading}</h2>
 
       <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>
-        view the archive
+        {t.projects.archiveLink}
       </Link>
 
       <ul className="projects-grid">
@@ -303,7 +306,7 @@ const Projects = () => {
       </ul>
 
       <button className="more-button" onClick={() => setShowMore(!showMore)}>
-        Show {showMore ? 'Less' : 'More'}
+        {showMore ? t.projects.showLess : t.projects.showMore}
       </button>
     </StyledProjectsSection>
   );

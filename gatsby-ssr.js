@@ -5,6 +5,9 @@
  */
 
 const React = require('react');
+const { LangProvider } = require('./src/i18n');
+
+exports.wrapRootElement = ({ element }) => React.createElement(LangProvider, null, element);
 
 // Set the theme before first paint to avoid a flash of the wrong theme.
 const setThemeScript = `

@@ -8,6 +8,7 @@ import sr from '@utils/sr';
 import { Layout } from '@components';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
+import { useTranslations } from '@i18n';
 
 const StyledTableContainer = styled.div`
   margin: 100px -20px;
@@ -130,6 +131,7 @@ const StyledTableContainer = styled.div`
 `;
 
 const ArchivePage = ({ location, data }) => {
+  const { archive } = useTranslations();
   const projects = data.allMarkdownRemark.edges;
   const revealTitle = useRef(null);
   const revealTable = useRef(null);
@@ -148,23 +150,23 @@ const ArchivePage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Helmet title="Archive" />
+      <Helmet title={archive.title} />
 
       <main>
         <header ref={revealTitle}>
-          <h1 className="big-heading">Archive</h1>
-          <p className="subtitle">A big list of things I’ve worked on</p>
+          <h1 className="big-heading">{archive.title}</h1>
+          <p className="subtitle">{archive.subtitle}</p>
         </header>
 
         <StyledTableContainer ref={revealTable}>
           <table>
             <thead>
               <tr>
-                <th>Year</th>
-                <th>Title</th>
-                <th className="hide-on-mobile">Made at</th>
-                <th className="hide-on-mobile">Built with</th>
-                <th>Link</th>
+                <th>{archive.year}</th>
+                <th>{archive.titleCol}</th>
+                <th className="hide-on-mobile">{archive.madeAt}</th>
+                <th className="hide-on-mobile">{archive.builtWith}</th>
+                <th>{archive.link}</th>
               </tr>
             </thead>
             <tbody>
@@ -204,22 +206,22 @@ const ArchivePage = ({ location, data }) => {
                       <td className="links">
                         <div>
                           {external && (
-                            <a href={external} aria-label="External Link">
+                            <a href={external} aria-label={archive.externalLink}>
                               <Icon name="External" />
                             </a>
                           )}
                           {github && (
-                            <a href={github} aria-label="GitHub Link">
+                            <a href={github} aria-label={archive.githubLink}>
                               <Icon name="GitHub" />
                             </a>
                           )}
                           {ios && (
-                            <a href={ios} aria-label="Apple App Store Link">
+                            <a href={ios} aria-label={archive.appStoreLink}>
                               <Icon name="AppStore" />
                             </a>
                           )}
                           {android && (
-                            <a href={android} aria-label="Google Play Store Link">
+                            <a href={android} aria-label={archive.playStoreLink}>
                               <Icon name="PlayStore" />
                             </a>
                           )}
