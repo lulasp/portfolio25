@@ -3,6 +3,17 @@
 
 const translations = {
   en: {
+    nav: {
+      about: 'About',
+      experience: 'Experience',
+      work: 'Work',
+      contact: 'Contact',
+      resume: 'CV',
+    },
+    notFound: {
+      title: 'Page Not Found',
+      home: 'Go Home',
+    },
     hero: {
       overline: 'Hi, my name is',
       name: 'Luís Serpa Pinto',
@@ -186,6 +197,17 @@ const translations = {
     },
   },
   pt: {
+    nav: {
+      about: 'Sobre',
+      experience: 'Experiência',
+      work: 'Trabalho',
+      contact: 'Contacto',
+      resume: 'CV',
+    },
+    notFound: {
+      title: 'Página Não Encontrada',
+      home: 'Voltar ao Início',
+    },
     hero: {
       overline: 'Olá, o meu nome é',
       name: 'Luís Serpa Pinto',

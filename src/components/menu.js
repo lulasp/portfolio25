@@ -7,6 +7,7 @@ import { KEY_CODES } from '@utils';
 import { useOnClickOutside } from '@hooks';
 import ThemeToggle from './themeToggle';
 import LangToggle from './langToggle';
+import { useTranslations } from '@i18n';
 
 const StyledMenu = styled.div`
   display: none;
@@ -158,6 +159,7 @@ const StyledSidebar = styled.aside`
 `;
 
 const Menu = () => {
+  const t = useTranslations();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -261,7 +263,7 @@ const Menu = () => {
                 {navLinks.map(({ url, name }, i) => (
                   <li key={i}>
                     <Link to={url} onClick={() => setMenuOpen(false)}>
-                      {name}
+                      {t.nav[name.toLowerCase()]}
                     </Link>
                   </li>
                 ))}
@@ -269,7 +271,7 @@ const Menu = () => {
             )}
 
             <a href="/Luis-Serpa-Pinto-CV.pdf" className="resume-link">
-              Resume
+              {t.nav.resume}
             </a>
 
             <LangToggle />

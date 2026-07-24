@@ -8,6 +8,7 @@ import { loaderDelay } from '@utils';
 import { useScrollDirection, usePrefersReducedMotion } from '@hooks';
 import { Menu, ThemeToggle, LangToggle } from '@components';
 import { IconLogo, IconHex } from '@components/icons';
+import { useTranslations } from '@i18n';
 
 const StyledHeader = styled.header`
   ${({ theme }) => theme.mixins.flexBetween};
@@ -151,6 +152,7 @@ const StyledLinks = styled.div`
 `;
 
 const Nav = ({ isHome }) => {
+  const t = useTranslations();
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
   const [scrolledToTop, setScrolledToTop] = useState(true);
@@ -207,7 +209,7 @@ const Nav = ({ isHome }) => {
 
   const ResumeLink = (
     <a className="resume-button" href="/Luis-Serpa-Pinto-CV.pdf" target="_blank" rel="noopener noreferrer">
-      Resume
+      {t.nav.resume}
     </a>
   );
 
@@ -223,7 +225,7 @@ const Nav = ({ isHome }) => {
                 {navLinks &&
                   navLinks.map(({ url, name }, i) => (
                     <li key={i}>
-                      <Link to={url}>{name}</Link>
+                      <Link to={url}>{t.nav[name.toLowerCase()]}</Link>
                     </li>
                   ))}
               </ol>
@@ -252,7 +254,7 @@ const Nav = ({ isHome }) => {
                     navLinks.map(({ url, name }, i) => (
                       <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
                         <li key={i} style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                          <Link to={url}>{name}</Link>
+                          <Link to={url}>{t.nav[name.toLowerCase()]}</Link>
                         </li>
                       </CSSTransition>
                     ))}
