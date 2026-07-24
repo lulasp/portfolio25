@@ -28,6 +28,22 @@ const StyledProject = styled.li`
     ${({ theme }) => theme.mixins.boxShadow};
   }
 
+  /* Demo-sites projects: on desktop the carousel is inline inside the content
+     column (between the tech list and the link). At ≤1020 that inline copy is
+     hidden and a second copy drops into its own full-width row beneath. */
+  &.has-sites {
+    @media (max-width: 1020px) {
+      .project-content {
+        grid-row: 1;
+        align-self: start;
+      }
+
+      .project-image {
+        grid-row: 1;
+      }
+    }
+  }
+
   &:not(:last-of-type) {
     margin-bottom: 100px;
 
@@ -83,12 +99,8 @@ const StyledProject = styled.li`
         margin-right: 0;
       }
     }
-    .project-sites {
+    .project-sites--inline {
       margin-left: auto;
-
-      @media (max-width: 768px) {
-        margin-left: 0;
-      }
     }
     .project-sites .carousel-header {
       flex-direction: row-reverse;
@@ -227,16 +239,6 @@ const StyledProject = styled.li`
     position: relative;
     z-index: 2;
     margin: 20px 0 0;
-    /* Keep the carousel clear of the overlapping project image
-       (image overlaps the content column by 1 col here, 3 at 1080). */
-    width: 83.333%;
-
-    @media (max-width: 1080px) {
-      width: 62.5%;
-    }
-    @media (max-width: 768px) {
-      width: 100%;
-    }
 
     .carousel-header {
       display: flex;
@@ -406,6 +408,35 @@ const StyledProject = styled.li`
     }
   }
 
+  /* Desktop copy: inline in the content column, kept clear of the
+     overlapping image. Hidden at ≤1020 in favour of the full-width copy. */
+  .project-sites--inline {
+    width: 83.333%;
+
+    @media (max-width: 1080px) {
+      width: 62.5%;
+    }
+    @media (max-width: 1020px) {
+      display: none;
+    }
+  }
+
+  /* Full-width copy: its own grid row beneath the project. Hidden on desktop. */
+  .project-sites--below {
+    grid-row: 2;
+    grid-column: 1 / -1;
+
+    @media (min-width: 1021px) {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      padding: 0 40px;
+    }
+    @media (max-width: 480px) {
+      padding: 0 25px;
+    }
+  }
+
   .project-links {
     display: flex;
     align-items: center;
@@ -556,7 +587,7 @@ const StyledProject = styled.li`
   }
 `;
 
-const SitesCarousel = ({ sites, prefersReducedMotion }) => {
+const SitesCarousel = ({ sites, prefersReducedMotion, className = '' }) => {
   const { featured } = useTranslations();
   const trackRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -606,7 +637,7 @@ const SitesCarousel = ({ sites, prefersReducedMotion }) => {
   const pad = n => String(n).padStart(2, '0');
 
   return (
-    <div className="project-sites">
+    <div className={`project-sites ${className}`.trim()}>
       <div className="carousel-header">
         <p className="project-sites-label">{featured.sitesLabel}</p>
         <div className="carousel-nav">
@@ -740,7 +771,10 @@ const Featured = () => {
             const image = getImage(cover);
 
             return (
-              <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
+              <StyledProject
+                key={i}
+                ref={el => (revealProjects.current[i] = el)}
+                className={sites && sites.length > 0 ? 'has-sites' : undefined}>
                 <div className="project-content">
                   <div>
                     <p className="project-overline">{featured.overline}</p>
@@ -762,7 +796,11 @@ const Featured = () => {
                     )}
 
                     {sites && sites.length > 0 && (
-                      <SitesCarousel sites={sites} prefersReducedMotion={prefersReducedMotion} />
+                      <SitesCarousel
+                        sites={sites}
+                        prefersReducedMotion={prefersReducedMotion}
+                        className="project-sites--inline"
+                      />
                     )}
 
                     <div className="project-links">
@@ -790,6 +828,14 @@ const Featured = () => {
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
                 </div>
+
+                {sites && sites.length > 0 && (
+                  <SitesCarousel
+                    sites={sites}
+                    prefersReducedMotion={prefersReducedMotion}
+                    className="project-sites--below"
+                  />
+                )}
               </StyledProject>
             );
           })}
