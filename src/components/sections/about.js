@@ -125,14 +125,14 @@ const About = () => {
   }, []);
 
   const skills = [
-    'Claude Code',
-    'Agentic AI',
-    'n8n',
-    'HubSpot',
     'React',
     'JavaScript (ES6+)',
     'CSS/SASS',
     'Git',
+    'HubSpot',
+    'Claude Code',
+    'n8n',
+    'Agentic AI',
   ];
 
   return (
