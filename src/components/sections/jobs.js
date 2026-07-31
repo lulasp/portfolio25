@@ -6,6 +6,7 @@ import { KEY_CODES } from '@utils';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 import { useTranslations } from '@i18n';
+import SectionGlow from '@components/ui/sectionGlow';
 
 const StyledJobsSection = styled.section`
   max-width: 700px;
@@ -223,6 +224,7 @@ const Jobs = () => {
 
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
+      <SectionGlow position="bottom" align="left" />
       <h2 className="numbered-heading">{jobs.heading}</h2>
 
       <div className="inner">

@@ -7,6 +7,7 @@ import { srConfig } from '@config';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 import { useTranslations } from '@i18n';
+import SectionGlow from '@components/ui/sectionGlow';
 
 const StyledProjectsGrid = styled.ul`
   ${({ theme }) => theme.mixins.resetList};
@@ -759,6 +760,7 @@ const Featured = () => {
 
   return (
     <section id="projects">
+      <SectionGlow position="top" align="left" />
       <h2 className="numbered-heading" ref={revealTitle}>
         {featured.heading}
       </h2>

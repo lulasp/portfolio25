@@ -5,6 +5,7 @@ import { srConfig } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 import { useTranslations } from '@i18n';
+import SectionGlow from '@components/ui/sectionGlow';
 
 const StyledAboutSection = styled.section`
   max-width: 900px;
@@ -141,6 +142,7 @@ const About = () => {
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
+      <SectionGlow position="top" align="right" />
       <h2 className="numbered-heading">{about.heading}</h2>
 
       <div className="inner">

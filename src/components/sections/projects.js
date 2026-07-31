@@ -7,6 +7,7 @@ import sr from '@utils/sr';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 import { useTranslations } from '@i18n';
+import SectionGlow from '@components/ui/sectionGlow';
 
 const StyledProjectsSection = styled.section`
   display: flex;
@@ -270,6 +271,7 @@ const Projects = () => {
 
   return (
     <StyledProjectsSection>
+      <SectionGlow position="bottom" align="right" />
       <h2 ref={revealTitle}>{t.projects.heading}</h2>
 
       <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>

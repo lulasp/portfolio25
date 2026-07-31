@@ -4,6 +4,7 @@ import { srConfig, email } from '@config';
 import sr from '@utils/sr';
 import { usePrefersReducedMotion } from '@hooks';
 import { useTranslations } from '@i18n';
+import SectionGlow from '@components/ui/sectionGlow';
 
 const StyledContactSection = styled.section`
   max-width: 600px;
@@ -57,6 +58,7 @@ const Contact = () => {
 
   return (
     <StyledContactSection id="contact" ref={revealContainer}>
+      <SectionGlow position="top" align="right" />
       <h2 className="numbered-heading overline">{contact.overline}</h2>
 
       <h2 className="title">{contact.title}</h2>
