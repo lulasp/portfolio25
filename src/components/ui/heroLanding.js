@@ -253,7 +253,12 @@ const StyledContent = styled.div`
   .inner {
     margin: 0 auto;
     max-width: 56rem;
+    padding: 0 50px;
     text-align: center;
+
+    @media (max-width: 480px) {
+      padding: 0 25px;
+    }
   }
 
   .announcement {
@@ -267,11 +272,6 @@ const StyledContent = styled.div`
     padding: 4px 12px;
     font-size: var(--fz-heading);
     color: var(--gray);
-    border: 1px solid var(--lightest-bg);
-    transition: var(--transition);
-    &:hover {
-      border-color: var(--green);
-    }
   }
   .announcement a {
     ${({ theme }) => theme.mixins.inlineLink};
