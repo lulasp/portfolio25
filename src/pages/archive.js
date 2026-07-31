@@ -9,6 +9,7 @@ import { Layout } from '@components';
 import { Icon } from '@components/icons';
 import { usePrefersReducedMotion } from '@hooks';
 import { useTranslations } from '@i18n';
+import SectionGlow from '@components/ui/sectionGlow';
 
 const StyledTableContainer = styled.div`
   margin: 100px -20px;
@@ -153,6 +154,8 @@ const ArchivePage = ({ location, data }) => {
       <Helmet title={archive.title} />
 
       <main>
+        <SectionGlow position="top" align="right" />
+        <SectionGlow position="bottom" align="left" />
         <header ref={revealTitle}>
           <h1 className="big-heading">{archive.title}</h1>
           <p className="subtitle">{archive.subtitle}</p>

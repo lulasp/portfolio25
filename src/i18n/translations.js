@@ -17,11 +17,11 @@ const translations = {
     hero: {
       overline: 'Hi, my name is',
       name: 'Luís Serpa Pinto',
-      tagline: 'I build design systems that scale.',
-      introBefore: 'I’m a web developer and Lead Frontend Developer at ',
+      tagline: 'Web developer, leading a front-end team.',
+      introBefore: 'These days I’m at ',
       introCompany: 'Visma',
       introAfter:
-        ', owning the custom HubSpot theme behind 50+ websites — from planning and prioritisation to delivery and QA.',
+        ', building and maintaining the HubSpot theme that 50+ websites rely on, from planning to delivery and QA, and everything in between.',
       cta: 'See what I’ve built',
     },
     about: {
@@ -211,11 +211,11 @@ const translations = {
     hero: {
       overline: 'Olá, o meu nome é',
       name: 'Luís Serpa Pinto',
-      tagline: 'Construo design systems que escalam.',
-      introBefore: 'Sou web developer e Lead Frontend Developer na ',
+      tagline: 'Developer web, a liderar uma equipa de front-end.',
+      introBefore: 'Atualmente estou na ',
       introCompany: 'Visma',
       introAfter:
-        ', responsável pelo tema HubSpot personalizado por detrás de mais de 50 websites — do planeamento e priorização à entrega e QA.',
+        ', a construir e manter o tema HubSpot em que mais de 50 websites confiam, do planeamento à entrega e QA, e tudo pelo meio.',
       cta: 'Vê o que construí',
     },
     about: {

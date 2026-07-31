@@ -112,6 +112,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
+    position: relative;
     margin: 0 auto;
     width: 100%;
     max-width: 1600px;
@@ -144,6 +145,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   section {
+    position: relative;
     margin: 0 auto;
     padding: 100px 0;
     max-width: 1000px;
