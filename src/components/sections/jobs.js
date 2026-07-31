@@ -35,6 +35,7 @@ const StyledTabList = styled.div`
 
   @media (max-width: 600px) {
     display: flex;
+    gap: 8px;
     overflow-x: auto;
     width: calc(100% + 100px);
     padding-left: 50px;
@@ -87,8 +88,10 @@ const StyledTabButton = styled.button`
   }
   @media (max-width: 600px) {
     ${({ theme }) => theme.mixins.flexCenter};
-    min-width: 120px;
-    padding: 0 15px;
+    flex-shrink: 0;
+    width: auto;
+    min-width: auto;
+    padding: 0 12px;
     border-left: 0;
     border-bottom: 2px solid var(--lightest-bg);
     text-align: center;
@@ -116,14 +119,10 @@ const StyledHighlight = styled.div`
   @media (max-width: 600px) {
     top: auto;
     bottom: 0;
-    width: 100%;
-    max-width: var(--tab-width);
+    width: var(--tab-w, var(--tab-width));
+    max-width: none;
     height: 2px;
-    margin-left: 50px;
-    transform: translateX(calc(${({ activeTabId }) => activeTabId} * var(--tab-width)));
-  }
-  @media (max-width: 480px) {
-    margin-left: 25px;
+    transform: translateX(var(--tab-left, 0));
   }
 `;
 
@@ -171,9 +170,24 @@ const Jobs = () => {
 
   const [activeTabId, setActiveTabId] = useState(0);
   const [tabFocus, setTabFocus] = useState(null);
+  const [highlight, setHighlight] = useState({ left: 0, width: 0 });
   const tabs = useRef([]);
   const revealContainer = useRef(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  // Track the active tab's real position/width so the mobile underline
+  // aligns with variable-width tabs.
+  useEffect(() => {
+    const measure = () => {
+      const el = tabs.current[activeTabId];
+      if (el) {
+        setHighlight({ left: el.offsetLeft, width: el.offsetWidth });
+      }
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [activeTabId]);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -247,7 +261,10 @@ const Jobs = () => {
                 </StyledTabButton>
               );
             })}
-          <StyledHighlight activeTabId={activeTabId} />
+          <StyledHighlight
+            activeTabId={activeTabId}
+            style={{ '--tab-left': `${highlight.left}px`, '--tab-w': `${highlight.width}px` }}
+          />
         </StyledTabList>
 
         <StyledTabPanels>
