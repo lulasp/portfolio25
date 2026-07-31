@@ -104,7 +104,7 @@ const StyledSidebar = styled.aside`
     background-color: var(--light-bg);
     box-shadow: -10px 0px 30px -15px var(--bg-shadow);
     z-index: 9;
-    transform: translateX(${props => (props.menuOpen ? 0 : 100)}vw);
+    transform: translateX(${props => (props.menuOpen ? '0' : '100%')});
     visibility: ${props => (props.menuOpen ? 'visible' : 'hidden')};
     transition: var(--transition);
   }

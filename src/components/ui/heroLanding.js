@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { usePrefersReducedMotion } from '@hooks';
 
 // Ported from a Next.js/Tailwind/shadcn "hero-1" component to this project's
 // Gatsby + styled-components stack. Same props API and layout; Tailwind classes
@@ -261,6 +262,30 @@ const StyledContent = styled.div`
     }
   }
 
+  /* Staggered entrance. The hero mounts hidden, then \`mounted\` flips on the next
+     frame to trigger the fade-up transition (one item after another). */
+  @media (prefers-reduced-motion: no-preference) {
+    .inner > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 800ms var(--easing), transform 800ms var(--easing);
+    }
+    .inner > *:nth-child(1) { transition-delay: 150ms; }
+    .inner > *:nth-child(2) { transition-delay: 300ms; }
+    .inner > *:nth-child(3) { transition-delay: 450ms; }
+    .inner > *:nth-child(4) { transition-delay: 600ms; }
+    .inner > *:nth-child(5) { transition-delay: 750ms; }
+
+    ${({ $mounted }) =>
+    $mounted &&
+      css`
+        .inner > * {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      `}
+  }
+
   .announcement {
     display: flex;
     justify-content: center;
@@ -385,6 +410,19 @@ const HeroLanding = props => {
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Entrance animation: mount hidden, then flip on the next frame so the CSS
+  // transition fires. Skipped (shown immediately) when reduced motion is on.
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    if (prefersReducedMotion) {
+      setMounted(true);
+      return undefined;
+    }
+    const raf = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(raf);
+  }, [prefersReducedMotion]);
+
   // Close the mobile panel once the viewport is back to desktop width.
   useEffect(() => {
     const onResize = e => {
@@ -506,7 +544,7 @@ const HeroLanding = props => {
       </StyledHeader>
       )}
 
-      <StyledContent>
+      <StyledContent $mounted={mounted}>
         <div className="inner">
           {announcementBanner && (
             <div className="announcement">
