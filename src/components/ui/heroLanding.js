@@ -265,7 +265,7 @@ const StyledContent = styled.div`
     position: relative;
     border-radius: 9999px;
     padding: 4px 12px;
-    font-size: var(--fz-sm);
+    font-size: var(--fz-heading);
     color: var(--gray);
     border: 1px solid var(--lightest-bg);
     transition: var(--transition);
@@ -297,6 +297,15 @@ const StyledContent = styled.div`
   }
   h1.large {
     font-size: clamp(1.875rem, 7vw, 4.5rem);
+  }
+
+  h2.subtitle {
+    margin-top: 4px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    color: var(--gray);
+    font-size: clamp(1.25rem, 4.5vw, 2.75rem);
   }
 
   .description {
@@ -364,6 +373,8 @@ const HeroLanding = props => {
     loginHref,
     showNav,
     title,
+    titleColor,
+    subtitle,
     description,
     announcementBanner,
     callToActions,
@@ -515,7 +526,10 @@ const HeroLanding = props => {
             </div>
           )}
 
-          <h1 className={titleSize}>{title}</h1>
+          <h1 className={titleSize} style={titleColor ? { color: titleColor } : undefined}>
+            {title}
+          </h1>
+          {subtitle && <h2 className="subtitle">{subtitle}</h2>}
           <p className="description">{description}</p>
 
           {callToActions && callToActions.length > 0 && (
@@ -549,6 +563,8 @@ HeroLanding.propTypes = {
   loginHref: PropTypes.string,
   showNav: PropTypes.bool,
   title: PropTypes.node.isRequired,
+  titleColor: PropTypes.string,
+  subtitle: PropTypes.node,
   description: PropTypes.node.isRequired,
   announcementBanner: PropTypes.shape({
     text: PropTypes.string.isRequired,

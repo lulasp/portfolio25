@@ -19,8 +19,10 @@ const Hero = () => {
   return (
     <HeroLanding
       showNav={false}
-      announcementBanner={{ text: hero.overline, linkText: hero.name }}
-      title={hero.tagline}
+      announcementBanner={{ text: hero.overline }}
+      title={hero.name}
+      titleColor="var(--green)"
+      subtitle={hero.tagline}
       description={description}
       gradientColors={{ from: 'var(--green)', to: 'var(--blue)' }}
       callToActions={[{ text: hero.cta, href: '#projects', variant: 'primary' }]}
