@@ -516,60 +516,6 @@ const StyledProject = styled.li`
     }
   }
 
-  /* Light mode: the dark-mode navy/screen overlay washes the image to white.
-     Use a soft green multiply tint that clears on hover instead. */
-  [data-theme='light'] & {
-    .project-image a {
-      background-color: transparent;
-
-      &:before {
-        display: block;
-        background-color: var(--green);
-        mix-blend-mode: multiply;
-        opacity: 0.35;
-      }
-
-      &:hover,
-      &:focus {
-        &:before {
-          opacity: 0;
-        }
-        .img {
-          filter: none;
-        }
-      }
-    }
-
-    .project-image .img {
-      mix-blend-mode: normal;
-      filter: grayscale(50%);
-
-      @media (max-width: 768px) {
-        filter: grayscale(50%);
-      }
-    }
-
-    .project-sites .site-thumb {
-      background-color: transparent;
-
-      &:before {
-        display: block;
-        background-color: var(--green);
-        mix-blend-mode: multiply;
-        opacity: 0.35;
-      }
-    }
-
-    .project-sites a:hover .site-thumb:before,
-    .project-sites a:focus .site-thumb:before {
-      opacity: 0;
-    }
-
-    .project-sites .img {
-      mix-blend-mode: normal;
-      filter: grayscale(50%);
-    }
-  }
 `;
 
 const SitesCarousel = ({ sites, prefersReducedMotion, className = '' }) => {
@@ -673,7 +619,7 @@ const SitesCarousel = ({ sites, prefersReducedMotion, className = '' }) => {
       <ul className="carousel-track" ref={trackRef}>
         {sites.map((site, i) => (
           <li key={i}>
-            <a href={site.url} aria-label={site.name}>
+            <a href={site.url} aria-label={site.name} rel="noreferrer">
               <div className="site-thumb">
                 <GatsbyImage image={getImage(site.image)} alt={site.name} className="img" />
               </div>
@@ -766,7 +712,7 @@ const Featured = () => {
                     <p className="project-overline">{featured.overline}</p>
 
                     <h3 className="project-title">
-                      <a href={external}>{title}</a>
+                      <a href={external} rel="noreferrer">{title}</a>
                     </h3>
 
                     <div className="project-description">
@@ -791,17 +737,17 @@ const Featured = () => {
 
                     <div className="project-links">
                       {cta && (
-                        <a href={cta} aria-label={featured.courseLink} className="cta">
+                        <a href={cta} aria-label={featured.courseLink} className="cta" rel="noreferrer">
                           {featured.learnMore}
                         </a>
                       )}
                       {github && (
-                        <a href={github} aria-label={featured.githubLink}>
+                        <a href={github} aria-label={featured.githubLink} rel="noreferrer">
                           <Icon name="GitHub" />
                         </a>
                       )}
                       {external && !cta && (
-                        <a href={external} aria-label={featured.externalLink} className="external">
+                        <a href={external} aria-label={featured.externalLink} className="external" rel="noreferrer">
                           <Icon name="External" />
                         </a>
                       )}
@@ -810,7 +756,7 @@ const Featured = () => {
                 </div>
 
                 <div className="project-image">
-                  <a href={external ? external : github ? github : '#'}>
+                  <a href={external ? external : github ? github : '#'} rel="noreferrer">
                     <GatsbyImage image={image} alt={title} className="img" />
                   </a>
                 </div>
