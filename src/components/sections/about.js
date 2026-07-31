@@ -63,11 +63,9 @@ const StyledPic = styled.div`
     position: relative;
     width: 100%;
     border-radius: var(--border-radius);
-    background-color: var(--green);
 
     &:hover,
     &:focus {
-      background: transparent;
       outline: 0;
 
       &:after {
@@ -77,14 +75,12 @@ const StyledPic = styled.div`
 
       .img {
         filter: none;
-        mix-blend-mode: normal;
       }
     }
 
     .img {
       position: relative;
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1);
       transition: var(--transition);
     }
@@ -103,8 +99,7 @@ const StyledPic = styled.div`
     &:before {
       top: 0;
       left: 0;
-      background-color: var(--bg);
-      mix-blend-mode: screen;
+      background-color: transparent;
     }
 
     &:after {

@@ -355,14 +355,6 @@ const StyledProject = styled.li`
       &:focus {
         outline: 0;
 
-        .site-thumb {
-          background: transparent;
-
-          &:before {
-            background: transparent;
-          }
-        }
-
         .img {
           filter: none;
         }
@@ -373,7 +365,6 @@ const StyledProject = styled.li`
       ${({ theme }) => theme.mixins.boxShadow};
       position: relative;
       border-radius: var(--border-radius);
-      background-color: var(--green);
       overflow: hidden;
 
       &:before {
@@ -385,14 +376,12 @@ const StyledProject = styled.li`
         bottom: 0;
         z-index: 3;
         transition: var(--transition);
-        background-color: var(--bg);
-        mix-blend-mode: screen;
+        background-color: transparent;
       }
     }
 
     .img {
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1) brightness(90%);
       transition: var(--transition);
     }
@@ -486,18 +475,14 @@ const StyledProject = styled.li`
     a {
       width: 100%;
       height: 100%;
-      background-color: var(--green);
       border-radius: var(--border-radius);
       vertical-align: middle;
 
       &:hover,
       &:focus {
-        background: transparent;
         outline: 0;
 
-        &:before,
         .img {
-          background: transparent;
           filter: none;
         }
       }
@@ -513,15 +498,14 @@ const StyledProject = styled.li`
         bottom: 0;
         z-index: 3;
         transition: var(--transition);
-        background-color: var(--bg);
-        mix-blend-mode: screen;
+        background-color: transparent;
       }
     }
 
     .img {
       border-radius: var(--border-radius);
-      mix-blend-mode: multiply;
       filter: grayscale(100%) contrast(1) brightness(90%);
+      transition: var(--transition);
 
       @media (max-width: 768px) {
         object-fit: cover;
