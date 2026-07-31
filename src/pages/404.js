@@ -8,6 +8,7 @@ import { navDelay } from '@utils';
 import { Layout } from '@components';
 import { usePrefersReducedMotion } from '@hooks';
 import { useTranslations } from '@i18n';
+import SectionGlow from '@components/ui/sectionGlow';
 
 const StyledMainContainer = styled.main`
   ${({ theme }) => theme.mixins.flexCenter};
@@ -44,6 +45,8 @@ const NotFoundPage = ({ location }) => {
 
   const content = (
     <StyledMainContainer className="fillHeight">
+      <SectionGlow position="top" align="right" />
+      <SectionGlow position="bottom" align="left" />
       <StyledTitle>404</StyledTitle>
       <StyledSubtitle>{t.notFound.title}</StyledSubtitle>
       <StyledHomeButton to="/">{t.notFound.home}</StyledHomeButton>

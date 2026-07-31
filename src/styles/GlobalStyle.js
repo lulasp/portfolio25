@@ -112,6 +112,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
+    position: relative;
     margin: 0 auto;
     width: 100%;
     max-width: 1600px;
