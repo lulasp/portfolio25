@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     width: 100%;
+    overflow-x: hidden;
     scroll-behavior: smooth;
   }
 
