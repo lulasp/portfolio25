@@ -35,7 +35,6 @@ const StyledTabList = styled.div`
 
   @media (max-width: 600px) {
     display: flex;
-    gap: 8px;
     overflow-x: auto;
     width: calc(100% + 100px);
     padding-left: 50px;
@@ -91,7 +90,7 @@ const StyledTabButton = styled.button`
     flex-shrink: 0;
     width: auto;
     min-width: auto;
-    padding: 0 12px;
+    padding: 0 16px;
     border-left: 0;
     border-bottom: 2px solid var(--lightest-bg);
     text-align: center;
