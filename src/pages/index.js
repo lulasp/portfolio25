@@ -9,8 +9,11 @@ const StyledMainContainer = styled.main`
 
 const IndexPage = ({ location }) => (
   <Layout location={location}>
+    {/* Hero sits outside <main> so it's edge-to-edge by being 100% of a
+        full-width parent — no 100vw full-bleed hack, which overshoots by the
+        scrollbar width and leaves the page scrollable sideways. */}
+    <Hero />
     <StyledMainContainer className="fillHeight">
-      <Hero />
       <About />
       <Jobs />
       <Featured />
