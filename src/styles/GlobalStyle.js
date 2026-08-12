@@ -120,14 +120,22 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     padding: 200px 150px;
 
+    /* Horizontal page gutter, mirrored by the padding below. Decorative
+       elements that bleed past a section cap their offset to this so they
+       never reach past the viewport edge (see SectionGlow). */
+    --gutter: 150px;
+
     @media (max-width: 1080px) {
       padding: 200px 100px;
+      --gutter: 100px;
     }
     @media (max-width: 768px) {
       padding: 150px 50px;
+      --gutter: 50px;
     }
     @media (max-width: 480px) {
       padding: 125px 25px;
+      --gutter: 25px;
     }
 
     &.fillHeight {

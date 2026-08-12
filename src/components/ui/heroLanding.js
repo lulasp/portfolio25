@@ -28,11 +28,10 @@ const CloseIcon = props => (
 const StyledHero = styled.div`
   position: relative;
   min-height: 100vh;
-  /* Break out of any max-width/padded parent container to go edge-to-edge.
-     Safe against horizontal scroll because <body> has overflow-x: hidden. */
-  width: 100vw;
-  left: 50%;
-  margin-left: -50vw;
+  /* Edge-to-edge by sitting outside <main> (see pages/index.js), so plain 100%
+     is exact. Don't reintroduce a 100vw full-bleed: 100vw includes the
+     scrollbar, so it overflows the client area and body stays sideways-scrollable. */
+  width: 100%;
   overflow: hidden;
   color: var(--lightest-gray);
 

@@ -45,8 +45,8 @@ const NotFoundPage = ({ location }) => {
 
   const content = (
     <StyledMainContainer className="fillHeight">
-      <SectionGlow position="top" align="right" />
-      <SectionGlow position="bottom" align="left" />
+      <SectionGlow position="top" align="right" bleed="none" />
+      <SectionGlow position="bottom" align="left" bleed="none" />
       <StyledTitle>404</StyledTitle>
       <StyledSubtitle>{t.notFound.title}</StyledSubtitle>
       <StyledHomeButton to="/">{t.notFound.home}</StyledHomeButton>

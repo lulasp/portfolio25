@@ -22,7 +22,14 @@ const StyledGlow = styled.div`
   opacity: 0.14;
 
   ${({ position }) => (position === 'bottom' ? 'bottom: -20rem;' : 'top: -20rem;')}
-  ${({ align }) => (align === 'right' ? 'right: -8rem;' : 'left: -8rem;')}
+  /* Bleed past the section, but never past the page gutter — below ~1200px the
+     sections are gutter-bound, so a flat -8rem would push the blob off the
+     viewport and make the document wider than the screen. Containers that are
+     already full-width (a direct child of <main>) pass bleed="none". */
+  ${({ align, bleed }) => {
+    const offset = bleed === 'none' ? '0px' : 'calc(-1 * min(8rem, var(--gutter, 8rem)))';
+    return align === 'right' ? `right: ${offset};` : `left: ${offset};`;
+  }}
 
   .glow-shape {
     width: 100%;
@@ -37,8 +44,8 @@ const StyledGlow = styled.div`
   }
 `;
 
-const SectionGlow = ({ position, align }) => (
-  <StyledGlow aria-hidden="true" position={position} align={align}>
+const SectionGlow = ({ position, align, bleed }) => (
+  <StyledGlow aria-hidden="true" position={position} align={align} bleed={bleed}>
     <div className="glow-shape" />
   </StyledGlow>
 );
@@ -46,11 +53,13 @@ const SectionGlow = ({ position, align }) => (
 SectionGlow.propTypes = {
   position: PropTypes.oneOf(['top', 'bottom']),
   align: PropTypes.oneOf(['left', 'right']),
+  bleed: PropTypes.oneOf(['gutter', 'none']),
 };
 
 SectionGlow.defaultProps = {
   position: 'top',
   align: 'left',
+  bleed: 'gutter',
 };
 
 export default SectionGlow;

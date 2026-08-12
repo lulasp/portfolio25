@@ -155,6 +155,12 @@ const StyledProject = styled.li`
     color: var(--lightest-gray);
     font-size: clamp(24px, 5vw, 28px);
 
+    /* Domain-style titles are one long unbreakable word — on narrow screens
+       they'd otherwise set the page's min-content width. */
+    @media (max-width: 480px) {
+      overflow-wrap: anywhere;
+    }
+
     @media (min-width: 768px) {
       margin: 0 0 20px;
     }

@@ -91,6 +91,12 @@ const StyledTableContainer = styled.div`
         font-size: var(--fz-xl);
         font-weight: 600;
         line-height: 1.25;
+
+        /* Long project names set the table's min-content width; let them break
+           on narrow screens rather than widen the page. */
+        @media (max-width: 768px) {
+          overflow-wrap: anywhere;
+        }
       }
 
       &.company {
@@ -112,6 +118,12 @@ const StyledTableContainer = styled.div`
 
       &.links {
         min-width: 100px;
+
+        /* On mobile the 100px floor pushes the table past the viewport — the
+           column only ever holds one or two 20px icons. */
+        @media (max-width: 768px) {
+          min-width: 0;
+        }
 
         div {
           display: flex;
@@ -154,8 +166,8 @@ const ArchivePage = ({ location, data }) => {
       <Helmet title={archive.title} />
 
       <main>
-        <SectionGlow position="top" align="right" />
-        <SectionGlow position="bottom" align="left" />
+        <SectionGlow position="top" align="right" bleed="none" />
+        <SectionGlow position="bottom" align="left" bleed="none" />
         <header ref={revealTitle}>
           <h1 className="big-heading">{archive.title}</h1>
           <p className="subtitle">{archive.subtitle}</p>
