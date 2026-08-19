@@ -188,7 +188,9 @@ const About = () => {
             <StaticImage
               className="img"
               src="../../images/me.jpg"
-              width={500}
+              width={600}
+              aspectRatio={1}
+              transformOptions={{ cropFocus: 'attention' }}
               quality={95}
               formats={['AUTO', 'WEBP', 'AVIF']}
               alt="Headshot"
