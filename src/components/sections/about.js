@@ -175,6 +175,12 @@ const About = () => {
               {about.p4d}
             </p>
 
+            <p>
+              {about.p5a}
+              <a href="https://github.com/NousResearch/hermes-agent" target="_blank">{about.p5Link}</a>
+              {about.p5b}
+            </p>
+
             <p>{about.skillsIntro}</p>
           </div>
 
