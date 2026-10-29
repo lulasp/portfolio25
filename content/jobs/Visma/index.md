@@ -4,13 +4,13 @@ title: 'Lead Frontend Developer'
 company: 'Visma'
 abrev: 'Visma'
 location: 'Porto, Portugal'
-range: 'April 2023 - Current'
+range: 'April 2023 - October 2026'
 url: 'http://www.visma.com/'
 ---
 
-- Lead the custom HubSpot theme powering the websites of 50+ companies across the Visma group
-- Own the project end to end — planning, prioritisation and delivery, tracked in Jira
-- Develop and maintain the shared theme and component library used across all sites
-- Manage the Azure DevOps deployment pipeline for reliable, repeatable releases
-- Run QA and support the internal teams building on the theme
+- Led the custom HubSpot theme powering the websites of 50+ companies across the Visma group
+- Owned the project end to end — planning, prioritisation and delivery, tracked in Jira
+- Developed and maintained the shared theme and component library used across all sites
+- Managed the Azure DevOps deployment pipeline for reliable, repeatable releases
+- Ran QA and supported the internal teams building on the theme
 - Introduced agentic AI into the workflow with Claude Code — speeding up delivery and cutting manual work
