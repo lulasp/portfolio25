@@ -171,8 +171,18 @@ const About = () => {
               {about.p4b}
               <a href="https://www.claude.com/product/claude-code" target="_blank">{about.p4Link1}</a>
               {about.p4c}
+              <a href="https://github.com/lulasp/HomeBaseApp" target="_blank">{about.p4LinkHome}</a>
+              {about.p4c2}
               <a href="https://n8n.io/" target="_blank">{about.p4Link2}</a>
               {about.p4d}
+            </p>
+
+            <p>
+              {about.p5a}
+              <a href="https://github.com/NousResearch/hermes-agent" target="_blank">{about.p5Link}</a>
+              {about.p5b}
+              <a href="https://github.com/lulasp/HomeBaseApp" target="_blank">{about.p5Link2}</a>
+              {about.p5c}
             </p>
 
             <p>{about.skillsIntro}</p>

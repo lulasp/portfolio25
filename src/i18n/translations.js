@@ -43,13 +43,22 @@ const translations = {
       p3b: ', leading the development of a HubSpot theme used by 50+ companies across the group.',
       p4a: 'A big part of my focus these days is ',
       p4Strong: 'AI',
-      p4b: '. I use agentic tools like ',
+      p4b: '. I use ',
       p4Link1: 'Claude Code',
       p4c:
-        ' daily to speed up development and cut out repetitive work, and I build automation workflows with ',
+        ' every day, at work and on my own projects. Outside work I’ve built a ',
+      p4LinkHome: 'household management app',
+      p4c2:
+        ' (React Native, Expo, Firebase) and the MVP of a two-sided marketplace (Next.js, TypeScript, Supabase) largely with it, giving each project its own agents, skills and rules. I also build automation workflows with ',
       p4Link2: 'n8n',
-      p4d:
-        ' to connect systems and let the machines handle the busywork. I’m genuinely excited about how agentic AI is reshaping the way we build for the web.',
+      p4d: ' to connect systems and let the machines handle the busywork.',
+      p5a: 'At home, an old MacBook runs ',
+      p5Link: 'Hermes',
+      p5b:
+        ', an always-on agent that works as my personal assistant. It has its own Gmail account, so it can read my calendar and the emails I forward to it and put together a morning briefing. It keeps my reminders in Notion and is connected to my ',
+      p5Link2: 'household app',
+      p5c:
+        '. When I’m away from my computer, it picks up work on my projects through Claude Code.',
       skillsIntro: 'Here are a few technologies I’ve been working with recently:',
     },
     jobs: {
@@ -237,13 +246,22 @@ const translations = {
       p3b: ', liderando o desenvolvimento de um tema HubSpot usado por mais de 50 empresas do grupo.',
       p4a: 'Grande parte do meu foco hoje em dia é a ',
       p4Strong: 'AI',
-      p4b: '. Uso ferramentas agentic como o ',
+      p4b: '. Uso o ',
       p4Link1: 'Claude Code',
       p4c:
-        ' diariamente para acelerar o desenvolvimento e eliminar o trabalho repetitivo, e crio fluxos de automação com o ',
+        ' todos os dias, no trabalho e em projetos pessoais. Fora do trabalho construí, em grande parte com ele, uma ',
+      p4LinkHome: 'app de gestão doméstica',
+      p4c2:
+        ' (React Native, Expo, Firebase) e o MVP de um marketplace de dois lados (Next.js, TypeScript, Supabase), cada um com os seus próprios agents, skills e regras. Também crio fluxos de automação com o ',
       p4Link2: 'n8n',
-      p4d:
-        ' para ligar sistemas e deixar as máquinas tratarem das tarefas rotineiras. Estou genuinamente entusiasmado com a forma como a agentic AI está a transformar o modo como construímos para a web.',
+      p4d: ' para ligar sistemas e deixar as máquinas tratarem das tarefas rotineiras.',
+      p5a: 'Em casa, um MacBook antigo corre o ',
+      p5Link: 'Hermes',
+      p5b:
+        ', um agent sempre ligado que funciona como meu assistente pessoal. Tem a sua própria conta de Gmail, por isso consegue ler o meu calendário e os emails que lhe reencaminho e preparar-me um resumo matinal. Gere os meus lembretes no Notion e está ligado à minha ',
+      p5Link2: 'app doméstica',
+      p5c:
+        '. Quando estou longe do computador, continua a trabalhar nos meus projetos através do Claude Code.',
       skillsIntro: 'Aqui estão algumas tecnologias com que tenho trabalhado recentemente:',
     },
     jobs: {
