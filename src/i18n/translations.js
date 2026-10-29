@@ -17,11 +17,11 @@ const translations = {
     hero: {
       overline: 'Hi, my name is',
       name: 'Luís Serpa Pinto',
-      tagline: 'Web developer, leading a front-end team.',
-      introBefore: 'These days I’m at ',
+      tagline: 'Web developer and front-end lead.',
+      introBefore: 'Until recently I led a front-end team at ',
       introCompany: 'Visma',
       introAfter:
-        ', building and maintaining the HubSpot theme that 50+ websites rely on, from planning to delivery and QA, and everything in between.',
+        ', building the HubSpot theme used as a group-wide service by 50+ companies. Now I’m looking for my next role, and building my own projects with the help of AI in the meantime.',
       cta: 'See what I’ve built',
     },
     about: {
@@ -38,9 +38,10 @@ const translations = {
       p2Link3: 'Lisbon-based marketing automation agency',
       p2d:
         ', where I developed a custom HubSpot theme for one of Portugal’s largest insurance companies.',
-      p3a: 'Currently, I’m a Lead Frontend Developer at ',
+      p3a: 'Most recently, I was a Lead Frontend Developer at ',
       p3Visma: 'Visma',
-      p3b: ', leading the development of a HubSpot theme used by 50+ companies across the group.',
+      p3b:
+        ', where I led the development of a HubSpot theme used by 50+ companies across the group, until October 2026.',
       p4a: 'A big part of my focus these days is ',
       p4Strong: 'AI',
       p4b: '. I use ',
@@ -68,13 +69,13 @@ const translations = {
           company: 'Visma',
           url: 'http://www.visma.com/',
           title: 'Lead Frontend Developer',
-          range: 'April 2023 - Current',
+          range: 'April 2023 - October 2026',
           bullets: [
-            'Lead the custom HubSpot theme powering the websites of 50+ companies across the Visma group',
-            'Own the project end to end — planning, prioritisation and delivery, tracked in Jira',
-            'Develop and maintain the shared theme and component library used across all sites',
-            'Manage the Azure DevOps deployment pipeline for reliable, repeatable releases',
-            'Run QA and support the internal teams building on the theme',
+            'Led the custom HubSpot theme powering the websites of 50+ companies across the Visma group',
+            'Owned the project end to end — planning, prioritisation and delivery, tracked in Jira',
+            'Developed and maintained the shared theme and component library used across all sites',
+            'Managed the Azure DevOps deployment pipeline for reliable, repeatable releases',
+            'Ran QA and supported the internal teams building on the theme',
             'Introduced agentic AI into the workflow with Claude Code — speeding up delivery and cutting manual work',
           ],
         },
@@ -188,7 +189,7 @@ const translations = {
       overline: 'What’s Next?',
       title: 'Get In Touch',
       body:
-        'I’m currently looking for a new React opportunity, so feel free to contact me. Whether you have a job opportunity or just a question, I’ll try my best to get back to you!',
+        'I’m currently looking for a new front-end opportunity, so feel free to contact me. Whether you have a job opportunity or just a question, I’ll try my best to get back to you!',
       cta: 'Reach Out',
     },
     archive: {
@@ -220,11 +221,11 @@ const translations = {
     hero: {
       overline: 'Olá, o meu nome é',
       name: 'Luís Serpa Pinto',
-      tagline: 'Developer web, a liderar uma equipa de front-end.',
-      introBefore: 'Atualmente estou na ',
+      tagline: 'Developer web e líder de front-end.',
+      introBefore: 'Até há pouco tempo liderei uma equipa de front-end na ',
       introCompany: 'Visma',
       introAfter:
-        ', a construir e manter o tema HubSpot em que mais de 50 websites confiam, do planeamento à entrega e QA, e tudo pelo meio.',
+        ', a construir o tema HubSpot usado como serviço transversal ao grupo por mais de 50 empresas. Agora estou à procura do meu próximo desafio e, entretanto, a construir os meus próprios projetos com a ajuda de AI.',
       cta: 'Vê o que construí',
     },
     about: {
@@ -241,9 +242,10 @@ const translations = {
       p2Link3: 'agência de automação de marketing sediada em Lisboa',
       p2d:
         ', onde desenvolvi um tema HubSpot personalizado para uma das maiores seguradoras de Portugal.',
-      p3a: 'Atualmente, sou Lead Frontend Developer na ',
+      p3a: 'Mais recentemente, fui Lead Frontend Developer na ',
       p3Visma: 'Visma',
-      p3b: ', liderando o desenvolvimento de um tema HubSpot usado por mais de 50 empresas do grupo.',
+      p3b:
+        ', onde liderei o desenvolvimento de um tema HubSpot usado por mais de 50 empresas do grupo, até outubro de 2026.',
       p4a: 'Grande parte do meu foco hoje em dia é a ',
       p4Strong: 'AI',
       p4b: '. Uso o ',
@@ -271,13 +273,13 @@ const translations = {
           company: 'Visma',
           url: 'http://www.visma.com/',
           title: 'Lead Frontend Developer',
-          range: 'Abril 2023 - Atual',
+          range: 'Abril 2023 - Outubro 2026',
           bullets: [
-            'Lidero o tema HubSpot personalizado que suporta os websites de mais de 50 empresas do grupo Visma',
-            'Sou responsável pelo projeto de ponta a ponta — planeamento, priorização e entrega, geridos no Jira',
-            'Desenvolvo e mantenho o tema partilhado e a biblioteca de componentes usada em todos os sites',
-            'Faço a gestão da pipeline de deployment em Azure DevOps para releases fiáveis e repetíveis',
-            'Faço QA e dou apoio às equipas internas que constroem sobre o tema',
+            'Liderei o tema HubSpot personalizado que suporta os websites de mais de 50 empresas do grupo Visma',
+            'Fui responsável pelo projeto de ponta a ponta — planeamento, priorização e entrega, geridos no Jira',
+            'Desenvolvi e mantive o tema partilhado e a biblioteca de componentes usada em todos os sites',
+            'Fiz a gestão da pipeline de deployment em Azure DevOps para releases fiáveis e repetíveis',
+            'Fiz QA e dei apoio às equipas internas que constroem sobre o tema',
             'Introduzi agentic AI no fluxo de trabalho com o Claude Code — acelerando entregas e reduzindo trabalho manual',
           ],
         },
@@ -392,7 +394,7 @@ const translations = {
       overline: 'O Que Se Segue?',
       title: 'Entra em Contacto',
       body:
-        'Estou atualmente à procura de uma nova oportunidade em React, por isso não hesites em contactar-me. Quer tenhas uma oportunidade de emprego ou apenas uma questão, farei o meu melhor para te responder!',
+        'Estou atualmente à procura de uma nova oportunidade em front-end, por isso não hesites em contactar-me. Quer tenhas uma oportunidade de emprego ou apenas uma questão, farei o meu melhor para te responder!',
       cta: 'Contacta-me',
     },
     archive: {
