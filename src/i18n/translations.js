@@ -17,8 +17,8 @@ const translations = {
     hero: {
       overline: 'Hi, my name is',
       name: 'Luís Serpa Pinto',
-      tagline: 'Web developer and front-end lead.',
-      introBefore: 'Until recently I led a front-end team at ',
+      tagline: 'Frontend developer.',
+      introBefore: 'Until recently I worked at ',
       introCompany: 'Visma',
       introAfter:
         ', building the HubSpot theme used as a group-wide service by 50+ companies. Now I’m looking for my next role, and building my own projects with the help of AI in the meantime.',
@@ -71,12 +71,12 @@ const translations = {
           title: 'Lead Frontend Developer',
           range: 'April 2023 - October 2026',
           bullets: [
-            'Led the custom HubSpot theme powering the websites of 50+ companies across the Visma group',
-            'Owned the project end to end — planning, prioritisation and delivery, tracked in Jira',
             'Developed and maintained the shared theme and component library used across all sites',
+            'Built the custom HubSpot theme powering the websites of 50+ companies across the Visma group',
+            'Introduced agentic AI into the workflow with Claude Code — speeding up delivery and cutting manual work',
             'Managed the Azure DevOps deployment pipeline for reliable, repeatable releases',
             'Ran QA and supported the internal teams building on the theme',
-            'Introduced agentic AI into the workflow with Claude Code — speeding up delivery and cutting manual work',
+            'Owned the project end to end — planning, prioritisation and delivery, tracked in Jira',
           ],
         },
         {
@@ -221,8 +221,8 @@ const translations = {
     hero: {
       overline: 'Olá, o meu nome é',
       name: 'Luís Serpa Pinto',
-      tagline: 'Developer web e líder de front-end.',
-      introBefore: 'Até há pouco tempo liderei uma equipa de front-end na ',
+      tagline: 'Developer frontend.',
+      introBefore: 'Até há pouco tempo trabalhei na ',
       introCompany: 'Visma',
       introAfter:
         ', a construir o tema HubSpot usado como serviço transversal ao grupo por mais de 50 empresas. Agora estou à procura do meu próximo desafio e, entretanto, a construir os meus próprios projetos com a ajuda de AI.',
@@ -275,12 +275,12 @@ const translations = {
           title: 'Lead Frontend Developer',
           range: 'Abril 2023 - Outubro 2026',
           bullets: [
-            'Liderei o tema HubSpot personalizado que suporta os websites de mais de 50 empresas do grupo Visma',
-            'Fui responsável pelo projeto de ponta a ponta — planeamento, priorização e entrega, geridos no Jira',
             'Desenvolvi e mantive o tema partilhado e a biblioteca de componentes usada em todos os sites',
+            'Construí o tema HubSpot personalizado que suporta os websites de mais de 50 empresas do grupo Visma',
+            'Introduzi agentic AI no fluxo de trabalho com o Claude Code — acelerando entregas e reduzindo trabalho manual',
             'Fiz a gestão da pipeline de deployment em Azure DevOps para releases fiáveis e repetíveis',
             'Fiz QA e dei apoio às equipas internas que constroem sobre o tema',
-            'Introduzi agentic AI no fluxo de trabalho com o Claude Code — acelerando entregas e reduzindo trabalho manual',
+            'Fui responsável pelo projeto de ponta a ponta — planeamento, priorização e entrega, geridos no Jira',
           ],
         },
         {
